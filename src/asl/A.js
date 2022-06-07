@@ -1,5 +1,6 @@
 import {Finger, FingerCurl, FingerDirection, GestureDescription} from 'fingerpose';
 
+//Has Similarities to Gesture E and S
 export const a = new GestureDescription("A");
 
 //Thumb

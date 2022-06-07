@@ -38,6 +38,7 @@
   position: absolute;
   margin-right: auto;
   margin-left: auto;
+  top: 40px;
   left: 330px;
   right: 0;
   height: 480px;
@@ -57,5 +58,5 @@
   font-weight: bold;
   z-index: 100;
   display: block;
-  padding-top: 500px;
+  padding-top: 540px;
 }
