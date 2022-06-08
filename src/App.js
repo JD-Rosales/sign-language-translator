@@ -36,6 +36,7 @@ function App() {
   const asl = [a, b, c, d, e, f, g, h, i, k, l, o, p, q, r, s, u, v, w, x, y]
 
   const [handsign, setHandsign] = useState(null);
+  const [gestureConfidence, setGestureConfidence] = useState(null);
 
   const cameraRef = useRef(null);
   const canvasRef = useRef(null);
@@ -79,6 +80,7 @@ function App() {
           console.log(gesture.gestures[highestConfidence].name)
 
           setHandsign(gesture.gestures[highestConfidence].name);
+          setGestureConfidence("Gesture Confidence " + gesture.gestures[highestConfidence].score.toFixed(2) * 10 + "%");
         }
       }
     }
@@ -114,6 +116,7 @@ function App() {
         />
 
         {handsign !== null ? <span className='hand-sign-text'>{handsign}</span>:""}
+        {handsign !== null ? <span className='gesture-confidence'>{gestureConfidence}</span>:""}
 
       </div>
 

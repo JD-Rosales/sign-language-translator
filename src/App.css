@@ -60,3 +60,12 @@
   display: block;
   padding-top: 540px;
 }
+
+.gesture-confidence {
+  color: #E64A19;
+  font-size: 25px;
+  font-weight: bold;
+  z-index: 100;
+  display: block;
+  padding-top: 20px;
+}
