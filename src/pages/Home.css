@@ -1,0 +1,53 @@
+.Home {
+  height: 100vh;
+  margin-left: 300px;
+  background-color: RGB(30, 28, 39);
+  color: RGB(207, 207, 212);
+}
+
+.Home h2 {
+  color: RGB(207, 207, 212);
+  text-align: center;
+  padding-top: 30px;
+}
+
+.Home .main-container {
+  position: absolute;
+  margin-right: auto;
+  margin-left: auto;
+  top: 80px;
+  left: 300px;
+  right: 0;
+  height: 420px;
+  width: 560px;
+  z-index: 200;
+  text-align: end;
+}
+
+.Home .camera, .canvas {
+  position: absolute;
+  margin-right: auto;
+  margin-left: auto;
+  top: 100px;
+  left: 300px;
+  right: 0;
+  height: 420px;
+  width: 560px;
+}
+
+.Home .translation {
+  font-size: 30px;
+  font-weight: bold;
+  z-index: 100;
+  display: block;
+  padding-top: 460px;
+  text-align: center;
+}
+
+.Home .translation-text {
+  font-size: 30px;
+  font-weight: bold;
+  z-index: 100;
+  display: block;
+  text-align: center;
+}
