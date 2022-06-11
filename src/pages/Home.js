@@ -44,6 +44,9 @@ function Home() {
   const cameraRef = useRef(null);
   const canvasRef = useRef(null);
 
+  let currentSign = 0;
+  let hasHand = 0
+
   const detectHand = async (model) => {
     if(cameraRef.current !==null && cameraRef.current.video.readyState === 4){
       setloading(false);
@@ -58,6 +61,15 @@ function Home() {
       canvasRef.current.height = videoHeight
 
       const hand = await model.estimateHands(video, true)
+      if(hand.length === 0){
+        hasHand++;
+      }
+
+      if(hasHand === 30){
+        setHandsign(null)
+        setGestureConfidence(null)
+        hasHand = 0
+      }
 
       if(hand.length > 0){
         const canvas = canvasRef.current.getContext("2d");
@@ -76,8 +88,14 @@ function Home() {
           const highestConfidence = arrConfidence.indexOf(max)
           // console.log(gesture.gestures[highestConfidence].name)
 
-          setHandsign(gesture.gestures[highestConfidence].name);
-          setGestureConfidence("Translation Confidence " + gesture.gestures[highestConfidence].score.toFixed(2) * 10 + "%")
+          currentSign++;
+
+          if(currentSign === 10){
+            setHandsign(gesture.gestures[highestConfidence].name);
+            setGestureConfidence("Translation Confidence " + gesture.gestures[highestConfidence].score.toFixed(2) * 10 + "%")
+            currentSign = 0;
+          }
+
         }
       }
 
