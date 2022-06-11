@@ -2,7 +2,7 @@
 export const PlayData = [
   {
     title: "GUESS THE HAND SIGN",
-    link: "/gues-hand-sign",
+    link: "/guess-hand-sign",
     cName: 'PlayItems'
   },
   {

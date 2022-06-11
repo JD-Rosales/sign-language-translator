@@ -90,7 +90,7 @@ function Home() {
 
           currentSign++;
 
-          if(currentSign === 10){
+          if(currentSign === 15){
             setHandsign(gesture.gestures[highestConfidence].name);
             setGestureConfidence("Translation Confidence " + gesture.gestures[highestConfidence].score.toFixed(2) * 10 + "%")
             currentSign = 0;
