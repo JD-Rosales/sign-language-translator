@@ -11,7 +11,7 @@
   padding-top: 30px;
 }
 
-.Home .main-container {
+.Home > .main-container {
   position: absolute;
   margin-right: auto;
   margin-left: auto;
@@ -24,7 +24,7 @@
   text-align: end;
 }
 
-.Home .camera, .canvas {
+.Home > .camera {
   position: absolute;
   margin-right: auto;
   margin-left: auto;
@@ -33,6 +33,19 @@
   right: 0;
   height: 420px;
   width: 560px;
+  border-radius: 8%;
+}
+
+.Home > .canvas {
+  position: absolute;
+  margin-right: auto;
+  margin-left: auto;
+  top: 100px;
+  left: 300px;
+  right: 0;
+  height: 420px;
+  width: 560px;
+  border-radius: 8%;
 }
 
 .Home .translation {

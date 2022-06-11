@@ -1,18 +1,18 @@
 
 export const PlayData = [
   {
-    title: "GUES THE HAND SIGN",
+    title: "GUESS THE HAND SIGN",
     link: "/gues-hand-sign",
     cName: 'PlayItems'
   },
   {
-    title: "FINGER SPELL THE ALPHABET",
+    title: "FINGER SPELL THE WORD",
     link: "/finger-spell",
     cName: 'PlayItems'
   },
   {
-    title: "SPELL THE HAND SIGNS",
-    link: "/spell-hand-signs",
+    title: "SPELL THE HAND SIGN",
+    link: "/spell-hand-sign",
     cName: 'PlayItems'
   },
 ]
