@@ -35,7 +35,7 @@
 
 .Practice > .practice-container {
   width: 800px;
-  height: 400px;
+  height: 330px;
   position: absolute;
   margin-right: auto;
   margin-left: auto;
@@ -48,7 +48,7 @@
 
 .Practice > .practice-container .camera-canvas-container {
   width: 400px;
-  height: 400px;
+  height: 330px;
   background-color: #2b293e;
   display: grid;
   grid-template-columns: 1fr;
@@ -56,8 +56,21 @@
 
 .Practice > .practice-container > .asl-container {
   width: 400px;
-  height: 400px;
+  height: 330px;
   background-color: rgb(46, 46, 42);
+}
+
+.Practice > .text-container {
+  width: 800px;
+  height: auto;
+  position: absolute;
+  margin-right: auto;
+  margin-left: auto;
+  top: 440px;
+  left: 380px;
+  right: 0;
+  text-align: start;
+
 }
 
 .Practice > .practice-container > .camera-canvas-container > .camera {
@@ -73,4 +86,36 @@
   z-index: 10;
   grid-row-start: 1;
   grid-column-start: 1;
+}
+
+.Practice > .btn-container {
+  width: 800px;
+  height: auto;
+  position: absolute;
+  margin-right: auto;
+  margin-left: auto;
+  top: 470px;
+  left: 300px;
+  right: 0;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.Practice > .btn-container button {
+  width: 40px;
+  height: 40px;
+  background-color: #2b293e;
+  color: #fff;
+  font-size: 18px;
+  outline: none;
+  border: none;
+  border-radius: 15%;
+  margin: 7px 14px;
+  cursor: pointer;
+}
+
+.Practice > .btn-container button:hover {
+  background-color: #293846;
 }
