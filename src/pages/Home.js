@@ -6,6 +6,7 @@ import * as handPose from '@tensorflow-models/handpose'
 import '@tensorflow/tfjs-backend-webgl'
 import { drawHand } from '../Drawing'
 import * as fingerpose from "fingerpose"
+import Loader from '../components/Loader'
 
 import {a} from '../asl/A'
 import {b} from '../asl/B'
@@ -32,7 +33,6 @@ import {v} from '../asl/V'
 import {w} from '../asl/W'
 import {x} from '../asl/X'
 import {y} from '../asl/Y'
-import Loader from '../components/Loader'
 
 function Home() {
   const asl = [a, b, c, d, e, f, g, h, i, k, l, o, p, q, r, s, u, v, w, x, y]
