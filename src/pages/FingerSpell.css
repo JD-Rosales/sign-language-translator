@@ -4,3 +4,68 @@
   background-color: RGB(30, 28, 39);
   color: RGB(207, 207, 212);
 }
+
+.FingerSpell > h2 {
+  text-align: center;
+  padding-top: 20px;
+  margin-bottom: 20px;
+}
+
+.FingerSpell > .top-controls {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 800px;
+  margin: auto;
+  padding-bottom: 10px;
+}
+
+.FingerSpell > .top-controls > .difficulty >select {
+  background-color: #2b293e;
+  outline: none;
+  border: none;
+  color: #fff;
+  width: 120px;
+  height: 30px;
+  margin-left: 15px;
+}
+
+.FingerSpell > .asl-container {
+  background-color: #2b293e;
+  width: 800px;
+  height: 400px;
+  margin: auto;
+}
+
+.FingerSpell > .bottom-text {
+  display: flex;  
+  align-items: center;
+  width: 800px;
+  margin: auto;
+  padding: 10px 0;
+  justify-content: space-between;
+}
+
+.FingerSpell > .bottom-controls {
+  display: flex;  
+  align-items: center;
+  width: 800px;
+  margin: auto;
+  padding: 10px 0;
+  justify-content: space-between;
+}
+
+.FingerSpell > .bottom-controls > span {
+  font-size: 24px;
+  font-weight: bold;
+}
+
+.FingerSpell > .bottom-controls > button {
+  background-color: #2b293e;
+  outline: none;
+  border: none;
+  height: 40px;
+  width: 140px;
+  border-radius: 10px;
+  color: #fff;
+}
