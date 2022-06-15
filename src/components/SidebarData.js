@@ -15,4 +15,10 @@ export const SidebarData = [
     link: "/play",
     cName: 'SidebarItems'
   },
+  {
+    title: "PRACTICE",
+    icon: <IoLogoGameControllerB />,
+    link: "/practice",
+    cName: 'SidebarItems'
+  },
 ]

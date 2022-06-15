@@ -18,11 +18,6 @@ function Play() {
             </li>
           )
         })}
-        <li className='PlayItems PlayPractice'>
-          <Link to='/practice' className='PlayItems'>
-                <span>PRACTICE</span>
-          </Link>
-        </li>
       </ul>
     </div>
   )

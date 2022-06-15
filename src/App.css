@@ -3,8 +3,8 @@
 .App {
   width: 100vw;
   height: 100vh;
-  color: #fff;
-  background-color: RGB(30, 28, 39);
+  color: RGB(248, 243, 237);
+  background-color: #f8f3ed;
   font-family: 'Inter', sans-serif; 
 }
 
