@@ -61,7 +61,7 @@ function GuessHandSign() {
 
   const [gameStart, setGameStart] = useState(false);
 
-  const [gameEnded, setGameEnded] = useState(false);
+  const [gameEnded, setGameEnded] = useState(null);
 
   const [asl_index, setAsl_index] = useState(0);
 
@@ -91,6 +91,7 @@ function GuessHandSign() {
   }
 
   function startGame(){
+    resetGame()
     setGameStart(true)
     setGameEnded(true)
     if(difficulty === 'Easy'){
@@ -112,13 +113,14 @@ function GuessHandSign() {
 
   function resetGame(){
     setGameStart(false)
+    setGameEnded(false)
     setAsl_index(0)
     setAsl_img(null)
     setAslArray(null)
     setLetter('')
     setCorrect(0)
     setWrong(0)
-    setGameEnded(false)
+
     setMinutes(0)
     setSeconds(0)
   }
@@ -178,12 +180,12 @@ function GuessHandSign() {
 
   //Button Clicked
   useEffect( () => {
-    if(aslArray !== null && gameStart === true){
+    if(aslArray !== null && gameStart === true && gameEnded){
       if(letter === aslArray[asl_index].name){
         console.log("correct!")
         setCorrect(correct+1)
         nextAsl()
-      } else {
+      } else if(letter !== '' && letter !== aslArray[asl_index].name){
         console.log("wrong!")
         setWrong(wrong+1)
         nextAsl()
@@ -197,6 +199,7 @@ function GuessHandSign() {
     const scoreSum = correct + wrong
     if(aslArray !== null){
       if(scoreSum === aslArray.length){
+        setGameStart(false)
         setGameEnded(true)
         setAsl_img(null)
         setAslArray(null)
@@ -205,82 +208,134 @@ function GuessHandSign() {
   }, [correct, wrong]);
 
   function btnA(){
-    setLetter('A')
+    if(gameStart){
+      setLetter('A')
+    }
   }
   function btnB(){
-    setLetter('B')
+    if(gameStart){
+      setLetter('B')
+    }
   }
   function btnC(){
-    setLetter('C')
+    if(gameStart){
+      setLetter('C')
+    }
   }
   function btnD(){
-    setLetter('D')
+    if(gameStart){
+      setLetter('D')
+    }
   }
   function btnE(){
-    setLetter('E')
+    if(gameStart){
+      setLetter('E')
+    }
   }
   function btnF(){
-    setLetter('F')
+    if(gameStart){
+      setLetter('F')
+    }
   }
   function btnG(){
-    setLetter('G')
+    if(gameStart){
+      setLetter('G')
+    }
   }
   function btnH(){
-    setLetter('H')
+    if(gameStart){
+      setLetter('H')
+    }
   }
   function btnI(){
-    setLetter('I')
+    if(gameStart){
+      setLetter('I')
+    }
   }
   function btnJ(){
-    setLetter('J')
+    if(gameStart){
+      setLetter('J')
+    }
   }
   function btnK(){
-    setLetter('K')
+    if(gameStart){
+      setLetter('K')
+    }
   }
   function btnL(){
-    setLetter('L')
+    if(gameStart){
+      setLetter('L')
+    }
   }
   function btnM(){
-    setLetter('M')
+    if(gameStart){
+      setLetter('M')
+    }
   }
   function btnN(){
-    setLetter('N')
+    if(gameStart){
+      setLetter('N')
+    }
   }
   function btnO(){
-    setLetter('O')
+    if(gameStart){
+      setLetter('O')
+    }
   }
   function btnP(){
-    setLetter('P')
+    if(gameStart){
+      setLetter('P')
+    }
   }
   function btnQ(){
-    setLetter('Q')
+    if(gameStart){
+      setLetter('Q')
+    }
   }
   function btnR(){
-    setLetter('R')
+    if(gameStart){
+      setLetter('R')
+    }
   }
   function btnS(){
-    setLetter('S')
+    if(gameStart){
+      setLetter('S')
+    }
   }
   function btnT(){
-    setLetter('T')
+    if(gameStart){
+      setLetter('T')
+    }
   }
   function btnU(){
-    setLetter('U')
+    if(gameStart){
+      setLetter('U')
+    }
   }
   function btnV(){
-    setLetter('V')
+    if(gameStart){
+      setLetter('V')
+    }
   }
   function btnW(){
-    setLetter('W')
+    if(gameStart){
+      setLetter('W')
+    }
   }
   function btnX(){
-    setLetter('X')
+    if(gameStart){
+      setLetter('X')
+    }
   }
   function btnY(){
-    setLetter('Y')
+    if(gameStart){
+      setLetter('Y')
+    }
   }
   function btnZ(){
-    setLetter('Z')
+    if(gameStart){
+      setLetter('Z')
+    }
   }
 
   return (
