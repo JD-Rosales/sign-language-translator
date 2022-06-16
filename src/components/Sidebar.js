@@ -7,8 +7,7 @@ function Sidebar() {
   return (
     <div className='Sidebar'>
       <div className='SideBarHeader'>
-        <h1 className='SideBarHeader1'>SIGN LANGUAGE</h1>
-        <h1 className='SideBarHeader2'>TRANSLATOR</h1>
+        <span className='SideBarHeader1'>Web-based E-Learning Sign Language Translator Game</span>
       </div>
       <ul className='SidebarList'>
         {SidebarData.map((item, key) => {

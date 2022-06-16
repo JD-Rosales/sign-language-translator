@@ -1,21 +1,26 @@
 .Home {
   height: 100vh;
   margin-left: 300px;
-  background-color: RGB(30, 28, 39);
-  color: RGB(207, 207, 212);
+  background-color: #f8f3ed;
+  color:#000;
 }
 
-.Home h2 {
-  color: RGB(207, 207, 212);
+.Home > span {
+  display: block;
   text-align: center;
-  padding-top: 30px;
+  font-size: 30px;
+  font-weight: bold;
+}
+
+.Home > .text {
+  padding-top: 20px;
 }
 
 .Home > .main-container {
   position: absolute;
   margin-right: auto;
   margin-left: auto;
-  top: 80px;
+  top: 110px;
   left: 300px;
   right: 0;
   height: 420px;
@@ -28,7 +33,7 @@
   position: absolute;
   margin-right: auto;
   margin-left: auto;
-  top: 100px;
+  top: 135px;
   left: 300px;
   right: 0;
   height: 420px;
@@ -40,7 +45,7 @@
   position: absolute;
   margin-right: auto;
   margin-left: auto;
-  top: 100px;
+  top: 135px;
   left: 300px;
   right: 0;
   height: 420px;

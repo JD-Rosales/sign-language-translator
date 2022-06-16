@@ -18,8 +18,10 @@
   align-items: center;
 }
 
-.SideBarHeader h1 {
-  font-size: 30px;
+.SideBarHeader span {
+  font-size: 18px;
+  margin-left: 20px;
+  margin-right: 60px;
 }
 
 .SideBarHeader1 {

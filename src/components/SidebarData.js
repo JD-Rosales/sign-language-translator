@@ -1,6 +1,7 @@
 import React from 'react'
 import {AiFillHome} from 'react-icons/ai'
 import {IoLogoGameControllerB} from 'react-icons/io'
+import {BiDumbbell} from 'react-icons/bi'
 
 export const SidebarData = [
   {
@@ -17,7 +18,7 @@ export const SidebarData = [
   },
   {
     title: "PRACTICE",
-    icon: <IoLogoGameControllerB />,
+    icon: <BiDumbbell />,
     link: "/practice",
     cName: 'SidebarItems'
   },

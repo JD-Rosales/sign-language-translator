@@ -119,7 +119,8 @@ function Home() {
   
   return (
     <div className='Home'>
-      <h2>SIGN LANGUAGE TO TEXT</h2>
+      <span className='text'>SIGN LANGUAGE TO</span>
+      <span className='text2'>TEXT TRANSLATOR</span>
 
       <div className='main-container'>
         {handsign !== null ? <span className='gesture-confidence'>{gestureConfidence}</span>:""}<span></span>

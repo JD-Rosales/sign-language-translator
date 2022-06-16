@@ -9,5 +9,32 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  background-color: rgba(0, 0, 0, 0.5);;
+  background-color: rgba(0, 0, 0, 0.9);;
+  color: #fff;
+}
+
+.Loader > img {
+  width: 200px;
+  height: 200px;
+}
+
+.Loader > .models {
+  font-size: 30px;
+  margin-top: -20px;
+  font-weight: bold;
+}
+
+.Loader > .facts {
+  font-size: 18px;
+  margin-top: 20px;
+  max-width: 500px;
+  text-align: center;
+}
+
+.Loader > .tips {
+  position: absolute;
+  margin: auto;
+  bottom: 40px;
+  max-width: 500px;
+  text-align: center;
 }
