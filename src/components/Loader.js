@@ -5,7 +5,7 @@ import loader from '../assets/loader.gif'
 function Loader() {
   const facts = [
     "Did you know that different countries have their own versions of sign language?",
-    "Did you know that different countries have their own versions of sign language?2",
+    "Did you know that many deaf people have 'name signs' that can be compared to a nickname?",
     "Did you know that different countries have their own versions of sign language?3",
     "Did you know that different countries have their own versions of sign language?4",
     "Did you know that different countries have their own versions of sign language?5",

@@ -66,7 +66,7 @@ function Practice() {
 
   const [handsign, setHandsign] = useState(null);
   const [gestureConfidence, setGestureConfidence] = useState(null);
-  const [loading, setloading] = useState(true);
+  const [loading, setloading] = useState(null);
 
   const cameraRef = useRef(null);
   const canvasRef = useRef(null);
@@ -104,7 +104,7 @@ function Practice() {
 
       if(hand.length > 0){
         const canvas = canvasRef.current.getContext("2d");
-        // drawHand(hand, canvas);
+        drawHand(hand, canvas);
 
         const estimateGesture = new fingerpose.GestureEstimator(asl)
 
@@ -319,7 +319,7 @@ function Practice() {
         <button type="button" onClick={btnZ}>Z</button>
       </div>
 
-      {loading !== false ? <Loader />:""}
+      {loading ? <Loader />:""}
     </div>
   )
 }

@@ -39,7 +39,7 @@ function Home() {
 
   const [handsign, setHandsign] = useState(null);
   const [gestureConfidence, setGestureConfidence] = useState(null);
-  const [loading, setloading] = useState(true);
+  const [loading, setloading] = useState(null);
 
   const cameraRef = useRef(null);
   const canvasRef = useRef(null);
@@ -116,7 +116,6 @@ function Home() {
     startDetection();
   }, []);
   
-  
   return (
     <div className='Home'>
       <span className='text'>SIGN LANGUAGE TO</span>
@@ -140,7 +139,7 @@ function Home() {
       {handsign !== null ? <span className='translation-text'>{handsign}</span>:""}
 
       
-      {loading !== false ? <Loader />:""}
+      {loading ? <Loader />:""}
 
     </div>
   )

@@ -122,6 +122,10 @@
   cursor: pointer;
 }
 
+.Practice > .btn-container button:focus {
+  background-color: #06aa0e80;
+}
+
 .Practice > .btn-container button:hover {
   background-color: #293846;
 }
