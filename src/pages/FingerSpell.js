@@ -61,19 +61,37 @@ function FingerSpell() {
   const canvasRef = useRef(null);
 
   const [gameStart, setGameStart] = useState(false);
+
+  const [gameEnded, setGameEnded] = useState(false);
+
   const [word, setWord] = useState(null);
+
+  const [letttersArr, setLetttersArr] = useState(null);
+
+  const [letterIndex, setLetterIndex] = useState(0);
+
   const [difficulty, setDifficulty] = useState('Easy');
 
+  const [minutes, setMinutes] = useState(0);
+  const [seconds, setSeconds] = useState(0);
+
   function startGame(){
+    resetGame()
     setGameStart(true)
     if(difficulty === 'Easy'){
       setWord(getRandomWord(easyWords))
+      setMinutes(1)
+      setSeconds(30)
     }
     if(difficulty === 'Medium'){
       setWord(getRandomWord(mediumWords))
+      setMinutes(0)
+      setSeconds(59)
     }
     if(difficulty === 'Hard'){
       setWord(getRandomWord(hardWords))
+      setMinutes(0)
+      setSeconds(30)
     }
   }
 
@@ -81,16 +99,31 @@ function FingerSpell() {
     setGameStart(false)
     setWord(null)
     setHandsign(null)
+    setLetterIndex(0)
+    setGameEnded(null)
+    setLetttersArr(null)
+    setGameEnded(false)
+    setMinutes(0)
+    setSeconds(0)
   }
 
   function changeDifficulty(e){
     setDifficulty(e.target.value)
+    resetGame()
   }
 
   function getRandomWord(arr){
     const randomIndex = Math.floor(Math.random() * arr.length);
     const item = arr[randomIndex]
+
+    //convert the word into an array of letters
+    setLetttersArr(toArray(item))
     return item
+  }
+
+  function toArray(str){
+    const arr = Array.from(str)
+    return arr
   }
 
   const detectHand = async (model) => {
@@ -147,9 +180,56 @@ function FingerSpell() {
   }, []);
 
   useEffect(() => {
-    if(handsign && gameStart)
-    console.log(handsign)
+    if(handsign && gameStart && letttersArr){
+      console.log(handsign)
+      if(handsign === letttersArr[letterIndex]){
+        console.log("Gesture Matched!")
+        setLetterIndex(letterIndex+1)
+      }
+    }    
   }, [handsign]);
+
+  //Game Ended
+  useEffect(() => {
+    if(letttersArr){
+      if(letterIndex === letttersArr.length){
+        setGameStart(false)
+        setGameEnded(true)
+      }
+    }
+  }, [letterIndex]);
+
+  //Countdown Timer
+  useEffect( () => {
+    if(gameStart) {
+      const intervalId = setInterval(() => {
+        if(seconds === 0){
+          setSeconds(59)
+        }
+        setSeconds(seconds-1)
+        if(seconds === 0){
+          setSeconds(59)
+        }
+
+        //minutes
+        if(minutes !== 0 && seconds === 0){
+          setMinutes(minutes-1)
+        }
+
+        //stop the timer
+        if(minutes === 0 && seconds === 0){
+          clearInterval(intervalId)
+          setMinutes(0)
+          setSeconds(0)
+
+          setGameStart(false)
+          setGameEnded(true)
+        }
+        
+      }, 1000);
+      return () => clearInterval(intervalId)
+    }
+  });
 
   return (
     <div className='FingerSpell'>
@@ -174,7 +254,7 @@ function FingerSpell() {
 
         <div className='timer-container'>
           <span>Time:</span>
-          <span>0:00</span>
+          <span>{minutes}:{seconds}</span>
         </div>
       </div>
 
@@ -189,6 +269,15 @@ function FingerSpell() {
           className='canvas'
           ref = {canvasRef}
         />
+        {letttersArr ? <span className='letter'>{letttersArr[letterIndex]}</span>:""}
+        {gameEnded ? <div className='game-ended-container'>
+          <span>FINGER SPELL COMPLETE!</span>
+
+          <span>Time Remaining</span>
+          <span>{minutes}:{seconds}</span>
+
+          <button onClick={startGame}>NEW GAME</button>
+        </div>:""}
       </div>
 
       <div className='word-container'>

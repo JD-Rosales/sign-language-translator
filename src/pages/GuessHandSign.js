@@ -76,9 +76,6 @@ function GuessHandSign() {
 
   const [letter, setLetter] = useState('');
 
-  const defaultMinutes = 0;
-  const defaultSeconds = 0;
-
   const [minutes, setMinutes] = useState(0);
   const [seconds, setSeconds] = useState(0);
 
@@ -157,8 +154,8 @@ function GuessHandSign() {
         //stop the timer
         if(minutes === 0 && seconds === 0){
           clearInterval(intervalId)
-          setMinutes(defaultMinutes)
-          setSeconds(defaultSeconds)
+          setMinutes(0)
+          setSeconds(0)
 
           setGameStart(false)
           setGameEnded(true)
