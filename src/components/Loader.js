@@ -6,17 +6,17 @@ function Loader() {
   const facts = [
     "Did you know that different countries have their own versions of sign language?",
     "Did you know that many deaf people have 'name signs' that can be compared to a nickname?",
-    "Did you know that different countries have their own versions of sign language?3",
-    "Did you know that different countries have their own versions of sign language?4",
-    "Did you know that different countries have their own versions of sign language?5",
+    "Did you know that the first person credited with the creation of a formal sign language for the hearing impaired was Pedro Ponce de León, a 16th-century Spanish Benedictine monk?",
+    "Did you know that there are more than 300 different sign languages in use around the world?",
+    "Did you know that Filipino Sign Language, according to the 2005 edition of Ethnologue, is used by at least 100,000 people and is reported to be very similar to American Sign Language (ASL)?",
   ]
 
   const tips = [
     "Make sure the camera is enabled when using the Sign Language Translator",
-    "Make sure the camera is enabled when using the Sign Language Translator2",
-    "Make sure the camera is enabled when using the Sign Language Translator3",
-    "Make sure the camera is enabled when using the Sign Language Translator4",
-    "Make sure the camera is enabled when using the Sign Language Translator5",
+    "Good lighting boosts gesture confidence when using the system",
+    "It's much easier to learn sign language if you're having fun. Take part in a game!",
+    "The more you train, the more proficient you will become.",
+    "Familiarize. Don't memorize.",
   ]
 
   function getRandomFacts(){
