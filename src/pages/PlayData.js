@@ -15,4 +15,9 @@ export const PlayData = [
     link: "/spell-hand-sign",
     cName: 'PlayItems'
   },
+  {
+    title: "4 PIC 1 WORD",
+    link: "/4-pic-1-word",
+    cName: 'PlayItems'
+  },
 ]

@@ -98,6 +98,11 @@
   color: red;
 }
 
+.FingerSpell > .word-index {
+  display: block;
+  text-align: center;
+}
+
 .FingerSpell > .asl-container > .game-ended-container {
   width: 100%;
   height: 100%;

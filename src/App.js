@@ -7,6 +7,7 @@ import Practice from './pages/Practice';
 import FingerSpell from './pages/FingerSpell';
 import GuessHandSign from './pages/GuessHandSign';
 import SpellHandSign from './pages/SpellHandSign';
+import FourPicOneWord from './pages/FourPicOneWord'
 import Page404 from './pages/Page404';
 
 
@@ -22,6 +23,7 @@ function App() {
           <Route path="/guess-hand-sign" element={<GuessHandSign />} />
           <Route path="/finger-spell" element={<FingerSpell />} />
           <Route path="/spell-hand-sign" element={<SpellHandSign />} />
+          <Route path="/4-pic-1-word" element={<FourPicOneWord />} />
 
           <Route path="*" element={<Page404 />} />
         </Routes>

@@ -40,15 +40,36 @@ function FingerSpell() {
     "COC",
     "CLC",
     "CAC",
+    "COC",
+    "CLC",
+    "CAC",
+    "COC",
+    "CLC",
+    "CAC",
   ]
 
   const mediumWords = [
     "LOLA",
     "LOLC", 
     "LOLX",
+    "LOLA",
+    "LOLC", 
+    "LOLX",
+    "LOLA",
+    "LOLC", 
+    "LOLX",
   ]
 
   const hardWords = [
+    "ALOLA",
+    "OLOCA",
+    "CALOCA",
+    "ALOLA",
+    "OLOCA",
+    "CALOCA",
+    "ALOLA",
+    "OLOCA",
+    "CALOCA",
     "ALOLA",
     "OLOCA",
     "CALOCA",
@@ -66,6 +87,10 @@ function FingerSpell() {
 
   const [word, setWord] = useState(null);
 
+  const [wordArray, setWordArray] = useState(null);
+
+  const [wordIndex, setWordIndex] = useState(0);
+
   const [letttersArr, setLetttersArr] = useState(null);
 
   const [letterIndex, setLetterIndex] = useState(0);
@@ -79,17 +104,17 @@ function FingerSpell() {
     resetGame()
     setGameStart(true)
     if(difficulty === 'Easy'){
-      setWord(getRandomWord(easyWords))
+      setWordArray(getWordArray(easyWords, 5))
       setMinutes(1)
       setSeconds(30)
     }
     if(difficulty === 'Medium'){
-      setWord(getRandomWord(mediumWords))
+      setWordArray(getWordArray(mediumWords, 8))
       setMinutes(0)
       setSeconds(59)
     }
     if(difficulty === 'Hard'){
-      setWord(getRandomWord(hardWords))
+      setWordArray(getWordArray(hardWords, 10))
       setMinutes(0)
       setSeconds(30)
     }
@@ -102,6 +127,8 @@ function FingerSpell() {
     setLetterIndex(0)
     setGameEnded(null)
     setLetttersArr(null)
+    setWordArray(null)
+    setWordIndex(0)
     setGameEnded(false)
     setMinutes(0)
     setSeconds(0)
@@ -112,13 +139,10 @@ function FingerSpell() {
     resetGame()
   }
 
-  function getRandomWord(arr){
-    const randomIndex = Math.floor(Math.random() * arr.length);
-    const item = arr[randomIndex]
+  function getWordArray(arr, num){
+    const shuffled = [...arr].sort(() => 0.5 - Math.random());
 
-    //convert the word into an array of letters
-    setLetttersArr(toArray(item))
-    return item
+    return shuffled.slice(0, num);
   }
 
   function toArray(str){
@@ -180,24 +204,51 @@ function FingerSpell() {
   }, []);
 
   useEffect(() => {
-    if(handsign && gameStart && letttersArr){
-      console.log(handsign)
+    if(gameStart){
+      console.log(wordArray)
+      setWord(wordArray[wordIndex])
+    }
+  }, [wordArray]);
+
+  useEffect(() => {
+    if(gameStart && word){
+      setLetttersArr(toArray(word))
+    }
+  }, [word]);
+
+  useEffect(() => {
+    if(gameStart && letttersArr){
       if(handsign === letttersArr[letterIndex]){
-        console.log("Gesture Matched!")
         setLetterIndex(letterIndex+1)
       }
-    }    
-  }, [handsign]);
+    }
+  }, [handsign, letterIndex]);
 
-  //Game Ended
+  // if lettersArray is equals to the length of letterIndex, 
+  // increment the wordIndex, reset the letterIndex & lettersArr
   useEffect(() => {
-    if(letttersArr){
+    if(gameStart && letttersArr){
       if(letterIndex === letttersArr.length){
-        setGameStart(false)
-        setGameEnded(true)
+        setWordIndex(wordIndex+1)
+        setLetterIndex(0)
       }
     }
   }, [letterIndex]);
+
+  useEffect(() => {
+    if(gameStart && wordArray){
+      if(wordIndex === wordArray.length){
+        setGameStart(false)
+        setGameEnded(true)
+        setLetttersArr(0)
+        setLetterIndex(0)
+        console.log("Game Ended")
+      }
+    }
+    if(gameStart){
+      setWord(wordArray[wordIndex])
+    }
+  }, [wordIndex]);
 
   //Countdown Timer
   useEffect( () => {
@@ -273,12 +324,14 @@ function FingerSpell() {
         {gameEnded ? <div className='game-ended-container'>
           <span>FINGER SPELL COMPLETE!</span>
 
-          <span>Time Remaining</span>
-          <span>{minutes}:{seconds}</span>
+          <span>Score</span>
+          <span>{wordIndex}/{wordArray.length}</span>
 
           <button onClick={startGame}>NEW GAME</button>
         </div>:""}
       </div>
+
+      {gameStart ? <span className='word-index'>{wordIndex+1}/{wordArray.length}</span>:""}
 
       <div className='word-container'>
         <span>FINGER SPELL THE WORD:</span>

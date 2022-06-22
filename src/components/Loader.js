@@ -19,15 +19,9 @@ function Loader() {
     "Familiarize. Don't memorize.",
   ]
 
-  function getRandomFacts(){
-    const randomIndex = Math.floor(Math.random() * facts.length);
-    const item = facts[randomIndex]
-    return item
-  }
-
-  function getRandomTips(){
-    const randomIndex = Math.floor(Math.random() * tips.length);
-    const item = tips[randomIndex]
+  function getRandomItem(arr){
+    const randomIndex = Math.floor(Math.random() * arr.length);
+    const item = arr[randomIndex]
     return item
   }
   
@@ -35,9 +29,9 @@ function Loader() {
     <div className='Loader'>
       <img className='loader-image' src={loader} alt='loader'></img>
       <span className='models'>Loading Hand Models</span>
-      <span className='facts'>{getRandomFacts()}</span>
+      <span className='facts'>{getRandomItem(facts)}</span>
 
-      <span className='tips'>Tip: {getRandomTips()}</span>
+      <span className='tips'>Tip: {getRandomItem(tips)}</span>
     </div>
   )
 }
