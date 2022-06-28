@@ -219,7 +219,7 @@ function SpellHandSign() {
     }
   }
 
-  function rederImages(){
+  function renderImages(){
     const images = []
     imagesArr.map((item, key) => {
       images.push(<img key={key} src={item}></img>)
@@ -330,7 +330,7 @@ function SpellHandSign() {
       <div className='asl-img-container'>
         
         <div className='img-container'>
-        {rederImages()}
+        {renderImages()}
         </div>
         {gameEnded ? <div className='game-ended-container'>
           <span>SPELL HAND SIGN COMPLETE!</span>

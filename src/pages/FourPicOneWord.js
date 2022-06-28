@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import './FourPicOneWord.css'
+import {IoMdSend, IoMdBackspace} from 'react-icons/io'
 import BLUE from '../assets/word-images/easy/BLUE.png'
 import CALL from '../assets/word-images/easy/CALL.png'
 import CODE from '../assets/word-images/easy/CODE.png'
@@ -44,6 +45,32 @@ import THOUGHT from '../assets/word-images/hard/THOUGHT.png'
 import VEHICLE from '../assets/word-images/hard/VEHICLE.png'
 import WEBPAGE from '../assets/word-images/hard/WEBPAGE.png'
 
+import A from '../asl-img/A.png'
+import B from '../asl-img/B.png'
+import C from '../asl-img/C.png'
+import D from '../asl-img/D.png'
+import E from '../asl-img/E.png'
+import F from '../asl-img/F.png'
+import G from '../asl-img/G.png'
+import H from '../asl-img/H.png'
+import I from '../asl-img/I.png'
+import J from '../asl-img/J.png'
+import K from '../asl-img/K.png'
+import L from '../asl-img/L.png'
+import M from '../asl-img/M.png'
+import N from '../asl-img/N.png'
+import O from '../asl-img/O.png'
+import P from '../asl-img/P.png'
+import Q from '../asl-img/Q.png'
+import R from '../asl-img/R.png'
+import S from '../asl-img/S.png'
+import T from '../asl-img/T.png'
+import U from '../asl-img/U.png'
+import V from '../asl-img/V.png'
+import W from '../asl-img/W.png'
+import X from '../asl-img/X.png'
+import Y from '../asl-img/Y.png'
+import Z from '../asl-img/Z.png'
 
 function FourPicOneWord() {
 
@@ -101,6 +128,11 @@ function FourPicOneWord() {
 
   const [lives, setLives] = useState([0, 1, 2, 3, 4]);
 
+  const [gameStart, setGameStart] = useState(false);
+
+  const [imagesArr, setImagesArr] = useState([]);
+  const [image_index, setImage_index] = useState(0);
+
   function renderLives(){
     const myLives = []
     lives.map((item, key) => {
@@ -109,12 +141,58 @@ function FourPicOneWord() {
     return myLives
   }
   
-  function reducLives() {
+  function reducLives(){
     const temp = [...lives]
 
     temp.splice(lives.length-1 ,1)
     setLives(temp)
   }
+
+  function startGame(){
+    setGameStart(true)
+    setImagesArr(getRandomItems(easyWords, 5))
+  }
+
+  function resetGame(){
+    setGameStart(false)
+    setImage_index(0)
+    setImagesArr([])
+  }
+
+  function renderImage(){
+    if(imagesArr.length !== 0){
+      return(
+        <img src={imagesArr[image_index].image}></img>
+      )
+    }
+  }
+
+  function nextIndex(){
+    if(gameStart && image_index !== imagesArr.length-1){
+      setImage_index(image_index+1)
+    }
+  }
+
+  useEffect(() => {
+    if(imagesArr.length !== 0){
+      console.log(imagesArr)
+    }
+  }, [imagesArr]);
+
+  function getRandomItems(arr, num){
+    const arrCopy = [...arr]
+
+    const items = []
+
+    for(let i = 0; i < num; i++){
+      let randomIndex = [Math.floor(Math.random()*arrCopy.length)]
+      items.push(arrCopy[randomIndex])
+      arrCopy.splice(randomIndex, 1)
+    }
+
+    return items
+  }
+
   return (
     <div className='FourPicOneWord'>
       <h2>4 PICS 1 WORD</h2>
@@ -130,9 +208,9 @@ function FourPicOneWord() {
         </div>
 
         <div className='btn-container'>
-          <button >START</button>
+          <button onClick={startGame}>START</button>
           <div className='divider'></div>
-          <button >RESET</button>
+          <button onClick={resetGame}>RESET</button>
         </div>
         
         <div className='lives-container'>
@@ -141,7 +219,7 @@ function FourPicOneWord() {
       </div>
       
       <div className='picture-container'>
-          <img src={BLUE} alt='4 PIC ONE WORD'></img>
+          {renderImage()}
       </div>
 
       <div className='bottom-indicator'>
@@ -153,13 +231,17 @@ function FourPicOneWord() {
       </div>
 
       <div className='bottom-controls'>
-        <button>X</button>
+        <button>
+          <IoMdBackspace className='btn-icon-backspace'/>
+        </button>
 
         <div className='answer-container'>
           test
         </div>
 
-        <button>Y</button>
+        <button onClick={nextIndex}>
+          <IoMdSend className='btn-icon-submit'/>
+        </button>
       </div>
 
       <div className='asl-button-container'>
