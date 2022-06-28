@@ -15,8 +15,8 @@
 }
 
 .FourPicOneWord > .picture-container {
-  width: 400px;
-  height: 300px;
+  width: 350px;
+  height: 350px;
   background-color: RGB(10, 10, 10);
   border-radius: 20px;
   margin: 0 auto;
@@ -186,8 +186,33 @@
 }
 
 .FourPicOneWord > .asl-button-container {
-  width: 500px;
-  height: 100px;
+  width: 700px;
   margin: 0 auto;
-  background-color: gray;
+  padding-top: 10px;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  height: 50px;
+}
+
+.FourPicOneWord > .asl-button-container > .choices-container {
+  padding: 5px;
+}
+
+.FourPicOneWord > .asl-button-container > .choices-container > button {
+  width: 50px;
+  height: 50px;
+  background-color: RGB(10, 10, 10);
+  border: none;
+  outline: none;
+  border-radius: 10px;
+}
+
+.FourPicOneWord > .asl-button-container > .choices-container > button:hover {
+  cursor: pointer;
+}
+
+.FourPicOneWord > .asl-button-container > .choices-container > button > img {
+  width: 100%;
+  height: 100%;
 }

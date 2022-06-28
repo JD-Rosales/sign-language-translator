@@ -74,56 +74,98 @@ import Z from '../asl-img/Z.png'
 
 function FourPicOneWord() {
 
+  const aslImages = [
+    {value: 'A', image: A},
+    {value: 'B', image: B},
+    {value: 'C', image: C},
+    {value: 'D', image: D},
+    {value: 'E', image: E},
+    {value: 'F', image: F},
+    {value: 'G', image: G},
+    {value: 'H', image: H},
+    {value: 'I', image: I},
+    {value: 'J', image: J},
+    {value: 'K', image: K},
+    {value: 'L', image: L},
+    {value: 'M', image: M},
+    {value: 'N', image: N},
+    {value: 'O', image: O},
+    {value: 'P', image: P},
+    {value: 'Q', image: Q},
+    {value: 'R', image: R},
+    {value: 'S', image: S},
+    {value: 'T', image: T},
+    {value: 'U', image: U},
+    {value: 'V', image: V},
+    {value: 'W', image: W},
+    {value: 'X', image: X},
+    {value: 'Y', image: Y},
+    {value: 'Z', image: Z},
+  ]
+
+  // const easyWords = [
+  //   {value: 'BLUE', image: BLUE},
+  //   {value: 'CALL', image: CALL},
+  //   {value: 'CODE', image: CODE},
+  //   {value: 'DATA', image: DATA},
+  //   {value: 'HERO', image: HERO},
+  //   {value: 'LOOP', image: LOOP},
+  //   {value: 'PULL', image: PULL},
+  //   {value: 'RING', image: RING},
+  //   {value: 'SIGN', image: SIGN},
+  //   {value: 'STAR', image: STAR},
+  // ]
+
   const easyWords = [
-    {name: 'BLUE', image: BLUE},
-    {name: 'CALL', image: CALL},
-    {name: 'CODE', image: CODE},
-    {name: 'DATA', image: DATA},
-    {name: 'HERO', image: HERO},
-    {name: 'LOOP', image: LOOP},
-    {name: 'PULL', image: PULL},
-    {name: 'RING', image: RING},
-    {name: 'SIGN', image: SIGN},
-    {name: 'STAR', image: STAR},
+    {value: ['B','L','U','E'], image: BLUE},
+    {value: ['C','A','L','L'], image: CALL},
+    {value: ['C','O','D','E'], image: CODE},
+    {value: ['D','A','T','A'], image: DATA},
+    {value: ['H','E','R','O'], image: HERO},
+    {value: ['L','O','O','P'], image: LOOP},
+    {value: ['P','U','L','L'], image: PULL},
+    {value: ['R','I','N','G'], image: RING},
+    {value: ['S','I','G','N'], image: SIGN},
+    {value: ['S','T','A','R'], image: STAR},
   ]
 
   const mediumWords = [
-    {name: 'BOARD', image: BOARD},
-    {name: 'ERROR', image: ERROR},
-    {name: 'FLOAT', image: FLOAT},
-    {name: 'LETTER', image: LETTER},
-    {name: 'MONEY', image: MONEY},
-    {name: 'MOUSE', image: MOUSE},
-    {name: 'ORANGE', image: ORANGE},
-    {name: 'PARTY', image: PARTY},
-    {name: 'PHONE', image: PHONE},
-    {name: 'POWER', image: POWER},
-    {name: 'SHORT', image: SHORT},
-    {name: 'STAND', image: STAND},
-    {name: 'STATUE', image: STATUE},
-    {name: 'STORE', image: STORE},
-    {name: 'VIRUS', image: VIRUS},
+    {value: 'BOARD', image: BOARD},
+    {value: 'ERROR', image: ERROR},
+    {value: 'FLOAT', image: FLOAT},
+    {value: 'LETTER', image: LETTER},
+    {value: 'MONEY', image: MONEY},
+    {value: 'MOUSE', image: MOUSE},
+    {value: 'ORANGE', image: ORANGE},
+    {value: 'PARTY', image: PARTY},
+    {value: 'PHONE', image: PHONE},
+    {value: 'POWER', image: POWER},
+    {value: 'SHORT', image: SHORT},
+    {value: 'STAND', image: STAND},
+    {value: 'STATUE', image: STATUE},
+    {value: 'STORE', image: STORE},
+    {value: 'VIRUS', image: VIRUS},
   ]
 
   const hardWords = [
-    {name: 'ACTRESS', image: ACTRESS},
-    {name: 'BALANCE', image: BALANCE},
-    {name: 'COMPILE', image: COMPILE},
-    {name: 'CONCERT', image: CONCERT},
-    {name: 'CONTROL', image: CONTROL},
-    {name: 'FORTUNE', image: FORTUNE},
-    {name: 'HOLIDAY', image: HOLIDAY},
-    {name: 'MONITOR', image: MONITOR},
-    {name: 'PACKAGE', image: PACKAGE},
-    {name: 'PAINTER', image: PAINTER},
-    {name: 'PERFECT', image: PERFECT},
-    {name: 'PICTURE', image: PICTURE},
-    {name: 'PROGRAM', image: PROGRAM},
-    {name: 'RECEIVE', image: RECEIVE},
-    {name: 'SOCIETY', image: SOCIETY},
-    {name: 'THOUGHT', image: THOUGHT},
-    {name: 'VEHICLE', image: VEHICLE},
-    {name: 'WEBPAGE', image: WEBPAGE},
+    {value: 'ACTRESS', image: ACTRESS},
+    {value: 'BALANCE', image: BALANCE},
+    {value: 'COMPILE', image: COMPILE},
+    {value: 'CONCERT', image: CONCERT},
+    {value: 'CONTROL', image: CONTROL},
+    {value: 'FORTUNE', image: FORTUNE},
+    {value: 'HOLIDAY', image: HOLIDAY},
+    {value: 'MONITOR', image: MONITOR},
+    {value: 'PACKAGE', image: PACKAGE},
+    {value: 'PAINTER', image: PAINTER},
+    {value: 'PERFECT', image: PERFECT},
+    {value: 'PICTURE', image: PICTURE},
+    {value: 'PROGRAM', image: PROGRAM},
+    {value: 'RECEIVE', image: RECEIVE},
+    {value: 'SOCIETY', image: SOCIETY},
+    {value: 'THOUGHT', image: THOUGHT},
+    {value: 'VEHICLE', image: VEHICLE},
+    {value: 'WEBPAGE', image: WEBPAGE},
   ]
 
   const [lives, setLives] = useState([0, 1, 2, 3, 4]);
@@ -131,7 +173,14 @@ function FourPicOneWord() {
   const [gameStart, setGameStart] = useState(false);
 
   const [imagesArr, setImagesArr] = useState([]);
-  const [image_index, setImage_index] = useState(0);
+
+  const [arrIndex, setArrIndex] = useState(0);
+
+  const [choicesArr, setChoicesArr] = useState([]);
+
+  const [answerArr, setAnswerArr] = useState([]);
+
+  const [difficulty, setDifficulty] = useState('Easy');
 
   function renderLives(){
     const myLives = []
@@ -149,35 +198,69 @@ function FourPicOneWord() {
   }
 
   function startGame(){
+    resetGame()
     setGameStart(true)
     setImagesArr(getRandomItems(easyWords, 5))
   }
 
   function resetGame(){
     setGameStart(false)
-    setImage_index(0)
+    setArrIndex(0)
     setImagesArr([])
+    setChoicesArr([])
   }
+
 
   function renderImage(){
     if(imagesArr.length !== 0){
       return(
-        <img src={imagesArr[image_index].image}></img>
+        <img src={imagesArr[arrIndex].image}></img>
       )
     }
   }
 
   function nextIndex(){
-    if(gameStart && image_index !== imagesArr.length-1){
-      setImage_index(image_index+1)
+    if(gameStart && arrIndex !== imagesArr.length-1){
+      setArrIndex(arrIndex+1)
     }
   }
 
-  useEffect(() => {
-    if(imagesArr.length !== 0){
-      console.log(imagesArr)
+  function getChoices(){
+    const arr = [...imagesArr[arrIndex].value]
+    const alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+    
+    for(let i = arr.length; i < 10; i++){
+      arr.push(alphabet[Math.floor(Math.random() * alphabet.length)])
     }
-  }, [imagesArr]);
+
+    return getImages(shuffle(arr))
+  }
+
+  function getImages(arr){
+    const imgArr = []
+
+    for(let i = 0; i < arr.length; i++){
+      for(let j = 0; j < aslImages.length; j++){
+        if(arr[i] === aslImages[j].value){
+          imgArr.push(aslImages[j])
+        }
+      }
+    }
+    return imgArr
+  }
+
+  function shuffle(arr){
+    const arrCopy = [...arr]
+    const items = []
+
+    for(let i = 0; i < arr.length; i++){
+      let randomIndex = [Math.floor(Math.random()*arrCopy.length)]
+      items.push(arrCopy[randomIndex])
+      arrCopy.splice(randomIndex, 1)
+    }
+
+    return items
+  }
 
   function getRandomItems(arr, num){
     const arrCopy = [...arr]
@@ -192,6 +275,43 @@ function FourPicOneWord() {
 
     return items
   }
+
+  function renderChoicesImages(){
+    if(choicesArr.length !== 0){
+      const choices = []
+
+      choicesArr.map((item, key) => {
+        choices.push(
+          <div className='choices-container' key={key}>
+            <button value={item.value}>
+              <img src={item.image}></img>
+            </button>
+          </div>
+        )
+      })
+
+      return choices
+    }
+  }
+
+  useEffect(() => {
+    if(choicesArr.length !== 0){
+      console.log(choicesArr)
+    }
+  }, [choicesArr]);
+
+  useEffect(() => {
+    if(imagesArr.length !== 0){
+      console.log(imagesArr)
+      setChoicesArr(getChoices)
+    }
+  }, [imagesArr]);
+
+  useEffect(() => {
+    if(gameStart){
+      setChoicesArr(getChoices)
+    }
+  }, [arrIndex]);
 
   return (
     <div className='FourPicOneWord'>
@@ -245,7 +365,7 @@ function FourPicOneWord() {
       </div>
 
       <div className='asl-button-container'>
-        <span>test</span>
+        {renderChoicesImages()}
       </div>
     </div>
   )
