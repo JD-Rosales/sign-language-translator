@@ -145,7 +145,7 @@
   width: 700px;
   margin: 0 auto;
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: 1fr 3fr 1fr;
   align-items: center;
 }
 
@@ -158,6 +158,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  cursor: pointer;
 }
 
 .FourPicOneWord > .bottom-controls button > .btn-icon-backspace {
@@ -177,10 +178,27 @@
 
 .FourPicOneWord > .bottom-controls > .answer-container {
   height: 100%;
-  background-color: red;
+  display: flex;
+  justify-content: center;
+  justify-items: center;
 }
 
-.FourPicOneWord > .bottom-controls button:nth-child(3) {
+.FourPicOneWord > .bottom-controls > .answer-container > button {
+  width: 45px;
+  height: 45px;
+  background-color: RGB(10, 10, 10);
+  border: none;
+  outline: none;
+  border-radius: 10px;
+  margin: 8px;
+}
+
+.FourPicOneWord > .bottom-controls > .answer-container > button > img {
+  width: 100%;
+  height: 100%;
+}
+
+.FourPicOneWord > .bottom-controls > button:nth-child(3) {
   justify-self: end;
   background-color: green;
 }
@@ -195,24 +213,21 @@
   height: 50px;
 }
 
-.FourPicOneWord > .asl-button-container > .choices-container {
-  padding: 5px;
-}
-
-.FourPicOneWord > .asl-button-container > .choices-container > button {
+.FourPicOneWord > .asl-button-container > button {
   width: 50px;
   height: 50px;
   background-color: RGB(10, 10, 10);
   border: none;
   outline: none;
   border-radius: 10px;
+  margin: 8px;
 }
 
-.FourPicOneWord > .asl-button-container > .choices-container > button:hover {
+.FourPicOneWord > .asl-button-container > button:hover {
   cursor: pointer;
 }
 
-.FourPicOneWord > .asl-button-container > .choices-container > button > img {
+.FourPicOneWord > .asl-button-container > button > img {
   width: 100%;
   height: 100%;
 }

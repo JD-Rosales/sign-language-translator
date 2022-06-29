@@ -179,6 +179,9 @@ function FourPicOneWord() {
   const [choicesArr, setChoicesArr] = useState([]);
 
   const [answerArr, setAnswerArr] = useState([]);
+  const [answerIndexArr, setAnswerIndexArr] = useState([]);
+
+  const [answerImageArr, setAnswerImageArr] = useState([]);
 
   const [difficulty, setDifficulty] = useState('Easy');
 
@@ -208,6 +211,9 @@ function FourPicOneWord() {
     setArrIndex(0)
     setImagesArr([])
     setChoicesArr([])
+    setAnswerArr([])
+    setAnswerIndexArr([])
+    setAnswerImageArr([])
   }
 
 
@@ -276,17 +282,16 @@ function FourPicOneWord() {
     return items
   }
 
-  function renderChoicesImages(){
-    if(choicesArr.length !== 0){
+  function renderChoicesImages(arr){
+    if(arr.length !== 0){
       const choices = []
 
-      choicesArr.map((item, key) => {
+      arr.map((item, key) => {
         choices.push(
-          <div className='choices-container' key={key}>
-            <button value={item.value}>
+            <button key={key} value={item.value} onClick={event => handleBtnChoices(event, key)}>
               <img src={item.image}></img>
+              <span>{item.value}</span>
             </button>
-          </div>
         )
       })
 
@@ -294,21 +299,54 @@ function FourPicOneWord() {
     }
   }
 
+  const handleBtnChoices = (event, key) => {
+    if(event.currentTarget.value !== '' && imagesArr[arrIndex].value.length !== answerArr.length){
+      const prevAnswerArr = [...answerArr]
+      const prevAnswerIndexArr = [...answerIndexArr]
+      prevAnswerArr.push(event.currentTarget.value)
+      setAnswerArr(prevAnswerArr)
+
+      prevAnswerIndexArr.push(key)
+      setAnswerIndexArr(prevAnswerIndexArr)
+      
+      //set the button value to empty to avoid multiple clicking of button
+      event.currentTarget.value = ''
+      // event.target.style.display = 'none'
+    }
+  };
+
+  function backSpace(){
+    
+  }
+
+  //scratch
   useEffect(() => {
     if(choicesArr.length !== 0){
-      console.log(choicesArr)
+      console.log(answerArr)
+      setAnswerImageArr(getImages(answerArr))
     }
-  }, [choicesArr]);
+  }, [answerArr]);
+  useEffect(() => {
+    if(answerIndexArr.length !== 0){
+      console.log(answerIndexArr)
+    }
+  }, [answerIndexArr]);
+  useEffect(() => {
+    if(answerImageArr.length !== 0){
+      console.log(answerImageArr)
+    }
+  }, [answerImageArr]);
 
   useEffect(() => {
     if(imagesArr.length !== 0){
-      console.log(imagesArr)
+      console.log(imagesArr[arrIndex].value)
       setChoicesArr(getChoices)
     }
   }, [imagesArr]);
 
   useEffect(() => {
     if(gameStart){
+      console.log(imagesArr[arrIndex].value)
       setChoicesArr(getChoices)
     }
   }, [arrIndex]);
@@ -356,7 +394,7 @@ function FourPicOneWord() {
         </button>
 
         <div className='answer-container'>
-          test
+          {renderChoicesImages(answerImageArr)}
         </div>
 
         <button onClick={nextIndex}>
@@ -365,7 +403,7 @@ function FourPicOneWord() {
       </div>
 
       <div className='asl-button-container'>
-        {renderChoicesImages()}
+        {renderChoicesImages(choicesArr)}
       </div>
     </div>
   )
