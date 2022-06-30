@@ -203,7 +203,12 @@ function FourPicOneWord() {
   function startGame(){
     resetGame()
     setGameStart(true)
-    setImagesArr(getRandomItems(easyWords, 5))
+    if(difficulty === 'Easy'){
+      setImagesArr(getRandomItems(easyWords, 5))
+    }
+    if(difficulty === 'Medium'){
+      setImagesArr(getRandomItems(mediumWords, 10))
+    }
   }
 
   function resetGame(){
@@ -216,6 +221,10 @@ function FourPicOneWord() {
     setAnswerImageArr([])
   }
 
+  function changeDifficulty(e){
+    setDifficulty(e.target.value)
+    resetGame()
+  }
 
   function renderImage(){
     if(imagesArr.length !== 0){
@@ -282,14 +291,14 @@ function FourPicOneWord() {
     return items
   }
 
-  function renderChoicesImages(arr){
+  function renderBtnImages(arr){
     if(arr.length !== 0){
       const choices = []
 
       arr.map((item, key) => {
         choices.push(
             <button key={key} value={item.value} onClick={event => handleBtnChoices(event, key)}>
-              <img src={item.image}></img>
+              <img src={item.image} alt='X'></img>
               <span>{item.value}</span>
             </button>
         )
@@ -308,29 +317,45 @@ function FourPicOneWord() {
 
       prevAnswerIndexArr.push(key)
       setAnswerIndexArr(prevAnswerIndexArr)
+
+      const choicesCopy = [...choicesArr]
+      choicesCopy.splice(key, 1, {value: '', image: null})
+      setChoicesArr(choicesCopy)
       
-      //set the button value to empty to avoid multiple clicking of button
+      //set the button value to empty to avoid multiple clicks of answer button
       event.currentTarget.value = ''
-      // event.target.style.display = 'none'
+      event.target.src = null
     }
   };
 
   function backSpace(){
-    
+    if(answerImageArr.length !== 0){
+      const choicesCopy = [...choicesArr]
+
+      const item = getImages(answerArr[answerArr.length-1])
+      choicesCopy.splice(answerIndexArr[answerIndexArr.length-1], 1, item[0])
+      setChoicesArr(choicesCopy)
+
+      const answerImageArrCopy = [...answerImageArr]
+      answerImageArrCopy.splice(answerImageArrCopy.length-1, 1)
+      setAnswerImageArr(answerImageArrCopy)
+
+      const answerArrCopy = [...answerArr]
+      answerArrCopy.splice(answerArrCopy.length-1, 1)
+      setAnswerArr(answerArrCopy)
+
+      const answerIndexArrCopy = [...answerIndexArr]
+      answerIndexArrCopy.splice(answerIndexArrCopy.length-1, 1)
+      setAnswerIndexArr(answerIndexArrCopy)
+      }
   }
 
-  //scratch
   useEffect(() => {
     if(choicesArr.length !== 0){
-      console.log(answerArr)
       setAnswerImageArr(getImages(answerArr))
     }
   }, [answerArr]);
-  useEffect(() => {
-    if(answerIndexArr.length !== 0){
-      console.log(answerIndexArr)
-    }
-  }, [answerIndexArr]);
+
   useEffect(() => {
     if(answerImageArr.length !== 0){
       console.log(answerImageArr)
@@ -358,7 +383,7 @@ function FourPicOneWord() {
         <div className='difficulty-container'>
           <span>GAME LEVEL:</span>
 
-          <select>
+          <select onChange={changeDifficulty}>
             <option value='Easy'>Easy</option>
             <option value='Medium'>Medium</option>
             <option value='Hard'>Hard</option>
@@ -389,12 +414,12 @@ function FourPicOneWord() {
       </div>
 
       <div className='bottom-controls'>
-        <button>
+        <button onClick={backSpace}>
           <IoMdBackspace className='btn-icon-backspace'/>
         </button>
 
         <div className='answer-container'>
-          {renderChoicesImages(answerImageArr)}
+          {renderBtnImages(answerImageArr)}
         </div>
 
         <button onClick={nextIndex}>
@@ -403,7 +428,7 @@ function FourPicOneWord() {
       </div>
 
       <div className='asl-button-container'>
-        {renderChoicesImages(choicesArr)}
+        {renderBtnImages(choicesArr)}
       </div>
     </div>
   )
