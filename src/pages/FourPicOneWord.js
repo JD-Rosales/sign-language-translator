@@ -217,7 +217,7 @@ function FourPicOneWord() {
   }
 
   function renderImage(){
-    if(imagesArr.length !== 0){
+    if(imagesArr.length !== 0 && !gameEnded){
       return(
         <img src={imagesArr[arrIndex].image}></img>
       )
@@ -225,27 +225,40 @@ function FourPicOneWord() {
   }
 
   function submitAnswer(){
+    // if(arrIndex === imagesArr.length-1){
+    //   setGameEnded(true)
+    //   setGameStart(false)
+    // }
     if(gameStart && answerArr.length === imagesArr[arrIndex].value.length && arrIndex !== imagesArr.length){
+
       if(JSON.stringify(imagesArr[arrIndex].value) === JSON.stringify(answerArr)){
+        setArrIndex(arrIndex+1)
         setCorrect(correct+1)
+
+        if(arrIndex === imagesArr.length-1){
+          setArrIndex(imagesArr.length-1)
+          setGameEnded(true)
+          setGameStart(false)
+        }
+
         setAnswerArr([])
         setAnswerIndexArr([])
         setAnswerImageArr([])
 
-        //only increment arrIndex if the length of the imageArr is less to avoid undefine error 
-        if(arrIndex < imagesArr.length-1){
-          setArrIndex(arrIndex+1)
-        }
       } else {
+        setArrIndex(arrIndex+1)
         setWrong(wrong+1)
+
+        if(arrIndex === imagesArr.length-1){
+          setArrIndex(imagesArr.length-1)
+          setGameEnded(true)
+          setGameStart(false)
+        }
+
         setAnswerArr([])
         setAnswerIndexArr([])
         setAnswerImageArr([])
-
         reduceLives()
-        if(arrIndex < imagesArr.length-1){
-          setArrIndex(arrIndex+1)
-        }
       }
     }
   }
@@ -503,6 +516,7 @@ function FourPicOneWord() {
     if(gameStart){
       console.log(imagesArr[arrIndex].value)
       setChoicesArr(getChoices)
+      getBlankAnswers(imagesArr[arrIndex].value)
     }
   }, [arrIndex]);
 
@@ -537,6 +551,7 @@ function FourPicOneWord() {
           {gameEnded ? 
           <div className='gameEnded-container'>
             <span>Game Over!</span>
+            <span>Score: {correct}/{imagesArr.length}</span>
           </div>
           : ''}
       </div>
