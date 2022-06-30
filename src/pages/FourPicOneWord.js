@@ -225,10 +225,6 @@ function FourPicOneWord() {
   }
 
   function submitAnswer(){
-    // if(arrIndex === imagesArr.length-1){
-    //   setGameEnded(true)
-    //   setGameStart(false)
-    // }
     if(gameStart && answerArr.length === imagesArr[arrIndex].value.length && arrIndex !== imagesArr.length){
 
       if(JSON.stringify(imagesArr[arrIndex].value) === JSON.stringify(answerArr)){
@@ -476,22 +472,24 @@ function FourPicOneWord() {
     lostLives.push('')
   }
 
+  //if the length of the remainingLives array is equals to zero set the game status to ended
   useEffect(() => {
     if(gameStart){
       if(remainingLives.length === 0){
-        console.log("Game Ended!")
         setGameEnded(true)
         setGameStart(false)
       }
     }
   }, [correct, wrong]);
 
+  //when the gameStart button is press render and set the lives depending on the difficulty
   useEffect(() => {
     if(gameStart){
       getRemainingLives()
     }
   }, [gameStart]);
 
+  //when answerArr changes state get image value 
   useEffect(() => {
     if(choicesArr.length !== 0){
       setAnswerImageArr(getImages(answerArr))
@@ -499,26 +497,32 @@ function FourPicOneWord() {
   }, [answerArr]);
 
   useEffect(() => {
-    if(answerImageArr.length !== 0){
-      console.log(answerImageArr)
-    }
-  }, [answerImageArr]);
-
-  useEffect(() => {
     if(imagesArr.length !== 0){
       console.log(imagesArr[arrIndex].value)
       setChoicesArr(getChoices)
+      
+      //getter and renderer for the blank answer
       getBlankAnswers(imagesArr[arrIndex].value)
     }
   }, [imagesArr]);
 
+  //when the arrIndex change state shuffle the correct answer with other random items then render the button choices
   useEffect(() => {
     if(gameStart){
       console.log(imagesArr[arrIndex].value)
       setChoicesArr(getChoices)
+
+      //getter and renderer for the blank answer
       getBlankAnswers(imagesArr[arrIndex].value)
     }
   }, [arrIndex]);
+
+  //scratch useEffect to check the correct answer on console
+  useEffect(() => {
+    if(answerImageArr.length !== 0){
+      console.log(answerImageArr)
+    }
+  }, [answerImageArr]);
 
   return (
     <div className='FourPicOneWord'>
