@@ -22,6 +22,22 @@
   margin: 0 auto;
 }
 
+.FourPicOneWord > .picture-container > .gameEnded-container {
+  width: 100%;
+  height: 100%;
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.FourPicOneWord > .picture-container > .gameEnded-container > span:nth-child(1) {
+  font-size: 30px;
+  font-weight: bold;
+  color: red;
+}
+
 .FourPicOneWord > .top-controls {
   width: 700px;
   margin: 0 auto;
@@ -82,41 +98,14 @@
   display: flex;
 }
 
-.FourPicOneWord > .top-controls > .lives-container > .heart {
-  height: 15px;
-  width: 15px;
-  position: relative;
-  transform: rotate(45deg);
-  background-color: red;
-  margin: 0 10px;
+.FourPicOneWord > .top-controls > .lives-container > .filled-heart{
+  color: red;
+  font-size: 30px;
 }
 
-.FourPicOneWord > .top-controls > .lives-container > .heart::before {
-  position: absolute;
-  bottom: 0px;
-  left: -10px;
-  width: 15px;
-  height: 15px;
-  content: '';
-  -webkit-border-radius: 50%;
-  -moz-border-radius: 50%;
-  -o-border-radius: 50%;
-  border-radius: 50%;
-  background-color: inherit;
-}
-
-.FourPicOneWord > .top-controls > .lives-container > .heart::after {
-  position: absolute;
-  top: -10px;
-  right: 0px;
-  width: 15px;
-  height: 15px;
-  content: '';
-  -webkit-border-radius: 50%;
-  -moz-border-radius: 50%;
-  -o-border-radius: 50%;
-  border-radius: 50%;
-  background-color: inherit;
+.FourPicOneWord > .top-controls > .lives-container > .outlined-heart{
+  font-size: 30px;
+  color: gray
 }
 
 .FourPicOneWord > .picture-container > img {
@@ -149,7 +138,7 @@
   align-items: center;
 }
 
-.FourPicOneWord > .bottom-controls button {
+.FourPicOneWord > .bottom-controls > button {
   width: 40px;
   height: 40px;
   border: none;
@@ -177,7 +166,7 @@
 }
 
 .FourPicOneWord > .bottom-controls > .answer-container {
-  height: 100%;
+  height: 45px;
   display: flex;
   justify-content: center;
   justify-items: center;
@@ -190,12 +179,22 @@
   border: none;
   outline: none;
   border-radius: 10px;
-  margin: 8px;
+  margin: 0 5px;
 }
 
 .FourPicOneWord > .bottom-controls > .answer-container > button > img {
   width: 100%;
   height: 100%;
+}
+
+.FourPicOneWord > .bottom-controls > .answer-container > .blank-answer {
+  width: 45px;
+  height: 45px;
+  background-color: RGB(10, 10, 10);
+  border: none;
+  outline: none;
+  border-radius: 10px;
+  margin: 0 5px;
 }
 
 .FourPicOneWord > .bottom-controls > button:nth-child(3) {
@@ -216,7 +215,7 @@
 .FourPicOneWord > .asl-button-container > button {
   width: 50px;
   height: 50px;
-  background-color: RGB(10, 10, 10);
+  background-color: rgb(55, 24, 22);
   border: none;
   outline: none;
   border-radius: 10px;
@@ -230,22 +229,5 @@
 .FourPicOneWord > .asl-button-container > button > img {
   width: 100%;
   height: 100%;
+  text-indent: -10000px
 }
-
-/* img {
-  position: relative;
-}
-
-img[alt]::after {
-  display: block;
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: #fff;
-  font-weight: 300;
-  line-height: 2;
-  text-align: center;
-  content: attr(alt);
-} */

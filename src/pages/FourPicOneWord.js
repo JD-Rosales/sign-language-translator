@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import './FourPicOneWord.css'
 import {IoMdSend, IoMdBackspace} from 'react-icons/io'
+import {AiFillHeart, AiOutlineHeart} from 'react-icons/ai'
 import BLUE from '../assets/word-images/easy/BLUE.png'
 import CALL from '../assets/word-images/easy/CALL.png'
 import CODE from '../assets/word-images/easy/CODE.png'
@@ -103,19 +104,6 @@ function FourPicOneWord() {
     {value: 'Z', image: Z},
   ]
 
-  // const easyWords = [
-  //   {value: 'BLUE', image: BLUE},
-  //   {value: 'CALL', image: CALL},
-  //   {value: 'CODE', image: CODE},
-  //   {value: 'DATA', image: DATA},
-  //   {value: 'HERO', image: HERO},
-  //   {value: 'LOOP', image: LOOP},
-  //   {value: 'PULL', image: PULL},
-  //   {value: 'RING', image: RING},
-  //   {value: 'SIGN', image: SIGN},
-  //   {value: 'STAR', image: STAR},
-  // ]
-
   const easyWords = [
     {value: ['B','L','U','E'], image: BLUE},
     {value: ['C','A','L','L'], image: CALL},
@@ -130,47 +118,47 @@ function FourPicOneWord() {
   ]
 
   const mediumWords = [
-    {value: 'BOARD', image: BOARD},
-    {value: 'ERROR', image: ERROR},
-    {value: 'FLOAT', image: FLOAT},
-    {value: 'LETTER', image: LETTER},
-    {value: 'MONEY', image: MONEY},
-    {value: 'MOUSE', image: MOUSE},
-    {value: 'ORANGE', image: ORANGE},
-    {value: 'PARTY', image: PARTY},
-    {value: 'PHONE', image: PHONE},
-    {value: 'POWER', image: POWER},
-    {value: 'SHORT', image: SHORT},
-    {value: 'STAND', image: STAND},
-    {value: 'STATUE', image: STATUE},
-    {value: 'STORE', image: STORE},
-    {value: 'VIRUS', image: VIRUS},
+    {value: ['B','O','A','R','D'], image: BOARD},
+    {value: ['E','R','R','O','R'], image: ERROR},
+    {value: ['F','L','O','A','T'], image: FLOAT},
+    {value: ['L','E','T','T','E','R'], image: LETTER},
+    {value: ['M','O','N','E','Y'], image: MONEY},
+    {value: ['M','O','U','S','E'], image: MOUSE},
+    {value: ['O','R','A','N','G','E'], image: ORANGE},
+    {value: ['P','A','RT','Y'], image: PARTY},
+    {value: ['P','H','O','N','E'], image: PHONE},
+    {value: ['P','O','W','E','R'], image: POWER},
+    {value: ['S','H','O','R','T'], image: SHORT},
+    {value: ['S','T','A','N','D'], image: STAND},
+    {value: ['S','T','A','T','U','E'], image: STATUE},
+    {value: ['S','T','O','R','E'], image: STORE},
+    {value: ['V','I','R','U','S'], image: VIRUS},
   ]
 
   const hardWords = [
-    {value: 'ACTRESS', image: ACTRESS},
-    {value: 'BALANCE', image: BALANCE},
-    {value: 'COMPILE', image: COMPILE},
-    {value: 'CONCERT', image: CONCERT},
-    {value: 'CONTROL', image: CONTROL},
-    {value: 'FORTUNE', image: FORTUNE},
-    {value: 'HOLIDAY', image: HOLIDAY},
-    {value: 'MONITOR', image: MONITOR},
-    {value: 'PACKAGE', image: PACKAGE},
-    {value: 'PAINTER', image: PAINTER},
-    {value: 'PERFECT', image: PERFECT},
-    {value: 'PICTURE', image: PICTURE},
-    {value: 'PROGRAM', image: PROGRAM},
-    {value: 'RECEIVE', image: RECEIVE},
-    {value: 'SOCIETY', image: SOCIETY},
-    {value: 'THOUGHT', image: THOUGHT},
-    {value: 'VEHICLE', image: VEHICLE},
-    {value: 'WEBPAGE', image: WEBPAGE},
+    {value: ['A','C','T','R','E','S','S'], image: ACTRESS},
+    {value: ['B','A','L','A','N','CE'], image: BALANCE},
+    {value: ['C','O','M','P','I','L','E'], image: COMPILE},
+    {value: ['C','O','N','C','E','R','T'], image: CONCERT},
+    {value: ['C','O','N','T','R','O','L'], image: CONTROL},
+    {value: ['F','O','R','T','U','N','E'], image: FORTUNE},
+    {value: ['H','O','L','I','D','A','Y'], image: HOLIDAY},
+    {value: ['M','O','N','I','T','O','R'], image: MONITOR},
+    {value: ['P','A','C','K','A','G','E'], image: PACKAGE},
+    {value: ['P','A','I','N','T','E','R'], image: PAINTER},
+    {value: ['P','E','R','F','E','C','T'], image: PERFECT},
+    {value: ['P','I','C','T','U','R','E'], image: PICTURE},
+    {value: ['P','R','O','G','R','A','M'], image: PROGRAM},
+    {value: ['R','E','C','E','I','V','E'], image: RECEIVE},
+    {value: ['S','O','C','I','E','T','Y'], image: SOCIETY},
+    {value: ['T','H','O','U','G','H','T'], image: THOUGHT},
+    {value: ['V','E','H','I','C','L','E'], image: VEHICLE},
+    {value: ['W','E','B','P','A','G','E'], image: WEBPAGE},
   ]
 
-  const [lives, setLives] = useState([0, 1, 2, 3, 4]);
-
   const [gameStart, setGameStart] = useState(false);
+
+  const [gameEnded, setGameEnded] = useState(false);
 
   const [imagesArr, setImagesArr] = useState([]);
 
@@ -181,24 +169,17 @@ function FourPicOneWord() {
   const [answerArr, setAnswerArr] = useState([]);
   const [answerIndexArr, setAnswerIndexArr] = useState([]);
 
+  const [blankAnswerArr, setBlankAnswerArr] = useState([]);
+
   const [answerImageArr, setAnswerImageArr] = useState([]);
 
   const [difficulty, setDifficulty] = useState('Easy');
 
-  function renderLives(){
-    const myLives = []
-    lives.map((item, key) => {
-      myLives.push(<div key={key} className='heart'></div>)
-    })
-    return myLives
-  }
-  
-  function reducLives(){
-    const temp = [...lives]
+  const [correct, setCorrect] = useState(0);
+  const [wrong, setWrong] = useState(0);
 
-    temp.splice(lives.length-1 ,1)
-    setLives(temp)
-  }
+  const [remainingLives, setRemainingLives] = useState([]);
+  const [lostLives, setLostLives] = useState([]);
 
   function startGame(){
     resetGame()
@@ -208,6 +189,9 @@ function FourPicOneWord() {
     }
     if(difficulty === 'Medium'){
       setImagesArr(getRandomItems(mediumWords, 10))
+    }
+    if(difficulty === 'Hard'){
+      setImagesArr(getRandomItems(hardWords, 15))
     }
   }
 
@@ -219,6 +203,12 @@ function FourPicOneWord() {
     setAnswerArr([])
     setAnswerIndexArr([])
     setAnswerImageArr([])
+    setCorrect(0)
+    setWrong(0)
+    setRemainingLives([])
+    setLostLives([])
+    setBlankAnswerArr([])
+    setGameEnded(false)
   }
 
   function changeDifficulty(e){
@@ -234,9 +224,29 @@ function FourPicOneWord() {
     }
   }
 
-  function nextIndex(){
-    if(gameStart && arrIndex !== imagesArr.length-1){
-      setArrIndex(arrIndex+1)
+  function submitAnswer(){
+    if(gameStart && answerArr.length === imagesArr[arrIndex].value.length && arrIndex !== imagesArr.length){
+      if(JSON.stringify(imagesArr[arrIndex].value) === JSON.stringify(answerArr)){
+        setCorrect(correct+1)
+        setAnswerArr([])
+        setAnswerIndexArr([])
+        setAnswerImageArr([])
+
+        //only increment arrIndex if the length of the imageArr is less to avoid undefine error 
+        if(arrIndex < imagesArr.length-1){
+          setArrIndex(arrIndex+1)
+        }
+      } else {
+        setWrong(wrong+1)
+        setAnswerArr([])
+        setAnswerIndexArr([])
+        setAnswerImageArr([])
+
+        reduceLives()
+        if(arrIndex < imagesArr.length-1){
+          setArrIndex(arrIndex+1)
+        }
+      }
     }
   }
 
@@ -291,15 +301,14 @@ function FourPicOneWord() {
     return items
   }
 
-  function renderBtnImages(arr){
+  function renderChoicesImages(arr){
     if(arr.length !== 0){
       const choices = []
 
       arr.map((item, key) => {
         choices.push(
             <button key={key} value={item.value} onClick={event => handleBtnChoices(event, key)}>
-              <img src={item.image} alt='X'></img>
-              <span>{item.value}</span>
+              <img src={item.image} alt=""></img>
             </button>
         )
       })
@@ -308,8 +317,58 @@ function FourPicOneWord() {
     }
   }
 
+  function renderAnswerImages(arr){
+    if(arr.length !== 0){
+      const choices = []
+
+      arr.map((item, key) => {
+        choices.push(
+            <button key={key} value={item.value}>
+              <img src={item.image} alt=""></img>
+            </button>
+        )
+      })
+
+      return choices
+    }
+  }
+
+  function renderBlankAnswers(arr){
+    if(arr.length !== 0){
+      const blankAnswer = []
+
+      arr.map((item, key) => {
+        blankAnswer.push(
+            <div key={key} className='blank-answer'>
+            </div>
+        )
+      })
+
+      return blankAnswer
+    }
+  }
+
+  function getBlankAnswers(arr){
+    for(let i =  0; i < arr.length; i++){
+      blankAnswerArr.push('')
+    }
+  }
+
+  function decrementBlankAnswers(arr){
+      const blankAnswerArrCopy = [...arr]
+      blankAnswerArrCopy.splice(blankAnswerArrCopy.length-1 ,1)
+      setBlankAnswerArr(blankAnswerArrCopy)
+  }
+
+  function incrementBlankAnswers(arr){
+    const blankAnswerArrCopy = [...arr]
+    blankAnswerArrCopy.push('')
+    setBlankAnswerArr(blankAnswerArrCopy)
+}
+
   const handleBtnChoices = (event, key) => {
-    if(event.currentTarget.value !== '' && imagesArr[arrIndex].value.length !== answerArr.length){
+    if(gameStart && event.currentTarget.value !== '' && imagesArr[arrIndex].value.length !== answerArr.length){
+      decrementBlankAnswers(blankAnswerArr)
       const prevAnswerArr = [...answerArr]
       const prevAnswerIndexArr = [...answerIndexArr]
       prevAnswerArr.push(event.currentTarget.value)
@@ -330,6 +389,7 @@ function FourPicOneWord() {
 
   function backSpace(){
     if(answerImageArr.length !== 0){
+      incrementBlankAnswers(blankAnswerArr)
       const choicesCopy = [...choicesArr]
 
       const item = getImages(answerArr[answerArr.length-1])
@@ -350,6 +410,75 @@ function FourPicOneWord() {
       }
   }
 
+  function renderLostLives(arr){
+    if(arr.length !== 0){
+      const lives = []
+
+      arr.map((item, key) => {
+        lives.push(
+          <AiFillHeart className='outlined-heart' key={key}/>
+        )
+      })
+      return lives
+    }
+  }
+
+  function renderRemainingLives(arr){
+    if(arr.length !== 0){
+      const lives = []
+
+      arr.map((item, key) => {
+        lives.push(
+          <AiFillHeart className='filled-heart' key={key}/>
+        )
+      })
+
+      return lives
+    }
+  }
+
+  function getRemainingLives(){
+    if(difficulty === 'Easy'){
+      for(let i =  0; i < 5; i++){
+        remainingLives.push('')
+      }
+    }
+    else if(difficulty === 'Medium'){
+      for(let i =  0; i < 4; i++){
+        remainingLives.push('')
+      }
+    }
+    else {
+      for(let i =  0; i < 3; i++){
+        remainingLives.push('')
+      }
+    }
+  }
+
+  function reduceLives(){
+    const remainingLivesCopy = [...remainingLives]
+    remainingLivesCopy.splice(remainingLivesCopy.length-1, 1)
+    setRemainingLives(remainingLivesCopy)
+
+    lostLives.push('')
+  }
+
+  useEffect(() => {
+    if(gameStart){
+      if(remainingLives.length === 0){
+        console.log("Game Ended!")
+        setGameEnded(true)
+        setGameStart(false)
+      }
+    }
+  }, [correct, wrong]);
+
+  useEffect(() => {
+    if(gameStart){
+      getRemainingLives()
+    }
+  }, [gameStart]);
+
   useEffect(() => {
     if(choicesArr.length !== 0){
       setAnswerImageArr(getImages(answerArr))
@@ -366,6 +495,7 @@ function FourPicOneWord() {
     if(imagesArr.length !== 0){
       console.log(imagesArr[arrIndex].value)
       setChoicesArr(getChoices)
+      getBlankAnswers(imagesArr[arrIndex].value)
     }
   }, [imagesArr]);
 
@@ -397,20 +527,26 @@ function FourPicOneWord() {
         </div>
         
         <div className='lives-container'>
-          {renderLives()}
+          {renderLostLives(lostLives)}
+          {renderRemainingLives(remainingLives)}
         </div>
       </div>
       
       <div className='picture-container'>
-          {renderImage()}
+          {gameStart ? renderImage() : ''}
+          {gameEnded ? 
+          <div className='gameEnded-container'>
+            <span>Game Over!</span>
+          </div>
+          : ''}
       </div>
 
       <div className='bottom-indicator'>
-        <span>Correct: 0</span>
+        <span>Correct: {correct}</span>
 
-        <span>1/5</span>
+        <span>{arrIndex+1}/{imagesArr.length}</span>
 
-        <span>Wrong: 0</span>
+        <span>Wrong: {wrong}</span>
       </div>
 
       <div className='bottom-controls'>
@@ -419,16 +555,17 @@ function FourPicOneWord() {
         </button>
 
         <div className='answer-container'>
-          {renderBtnImages(answerImageArr)}
+          {renderAnswerImages(answerImageArr)}
+          {renderBlankAnswers(blankAnswerArr)}
         </div>
 
-        <button onClick={nextIndex}>
+        <button onClick={submitAnswer}>
           <IoMdSend className='btn-icon-submit'/>
         </button>
       </div>
 
       <div className='asl-button-container'>
-        {renderBtnImages(choicesArr)}
+        {renderChoicesImages(choicesArr)}
       </div>
     </div>
   )
