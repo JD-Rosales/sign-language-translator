@@ -201,6 +201,7 @@ function FingerSpell() {
 
   useEffect(() => {
     startDetection();
+    // eslint-disable-next-line
   }, []);
 
   useEffect(() => {
@@ -208,12 +209,14 @@ function FingerSpell() {
       console.log(wordArray)
       setWord(wordArray[wordIndex])
     }
+    // eslint-disable-next-line
   }, [wordArray]);
 
   useEffect(() => {
     if(gameStart && word){
       setLetttersArr(toArray(word))
     }
+    // eslint-disable-next-line
   }, [word]);
 
   useEffect(() => {
@@ -222,6 +225,7 @@ function FingerSpell() {
         setLetterIndex(letterIndex+1)
       }
     }
+    // eslint-disable-next-line
   }, [handsign, letterIndex]);
 
   // if lettersArray is equals to the length of letterIndex, 
@@ -233,6 +237,7 @@ function FingerSpell() {
         setLetterIndex(0)
       }
     }
+    // eslint-disable-next-line
   }, [letterIndex]);
 
   useEffect(() => {
@@ -248,6 +253,7 @@ function FingerSpell() {
     if(gameStart){
       setWord(wordArray[wordIndex])
     }
+    // eslint-disable-next-line
   }, [wordIndex]);
 
   //Countdown Timer

@@ -221,10 +221,10 @@ function SpellHandSign() {
 
   function renderImages(){
     const images = []
+    // eslint-disable-next-line
     imagesArr.map((item, key) => {
-      images.push(<img key={key} src={item}></img>)
+      images.push(<img key={key} src={item} alt=""></img>)
     })
-
     return images
   }
 
@@ -240,6 +240,7 @@ function SpellHandSign() {
       console.log(aslArray)
       setGameWord(aslArray[asl_index])
     }
+    // eslint-disable-next-line
   }, [gameStart, asl_index, gameWord]);
 
   //run if the gameWord change
@@ -247,6 +248,7 @@ function SpellHandSign() {
       if(gameWord){
         setImagesArr(getImages(gameWord))
       }
+      // eslint-disable-next-line
   }, [gameWord]);
 
   useEffect(() => {
@@ -266,6 +268,7 @@ function SpellHandSign() {
         setImagesArr([])
       }
     }
+    // eslint-disable-next-line
   }, [asl_index]);
 
   //Countdown Timer

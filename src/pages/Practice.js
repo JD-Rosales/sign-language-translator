@@ -139,6 +139,7 @@ function Practice() {
 
   useEffect(() => {
     startDetection();
+    // eslint-disable-next-line
   }, []);
 
   useEffect(() => {

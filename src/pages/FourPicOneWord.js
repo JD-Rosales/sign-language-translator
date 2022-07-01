@@ -125,7 +125,7 @@ function FourPicOneWord() {
     {value: ['M','O','N','E','Y'], image: MONEY},
     {value: ['M','O','U','S','E'], image: MOUSE},
     {value: ['O','R','A','N','G','E'], image: ORANGE},
-    {value: ['P','A','RT','Y'], image: PARTY},
+    {value: ['P','A','R','T','Y'], image: PARTY},
     {value: ['P','H','O','N','E'], image: PHONE},
     {value: ['P','O','W','E','R'], image: POWER},
     {value: ['S','H','O','R','T'], image: SHORT},
@@ -137,7 +137,7 @@ function FourPicOneWord() {
 
   const hardWords = [
     {value: ['A','C','T','R','E','S','S'], image: ACTRESS},
-    {value: ['B','A','L','A','N','CE'], image: BALANCE},
+    {value: ['B','A','L','A','N','C','E'], image: BALANCE},
     {value: ['C','O','M','P','I','L','E'], image: COMPILE},
     {value: ['C','O','N','C','E','R','T'], image: CONCERT},
     {value: ['C','O','N','T','R','O','L'], image: CONTROL},
@@ -193,6 +193,7 @@ function FourPicOneWord() {
     if(difficulty === 'Hard'){
       setImagesArr(getRandomItems(hardWords, 15))
     }
+    getRemainingLives()
   }
 
   function resetGame(){
@@ -219,7 +220,7 @@ function FourPicOneWord() {
   function renderImage(){
     if(imagesArr.length !== 0 && !gameEnded){
       return(
-        <img src={imagesArr[arrIndex].image}></img>
+        <img src={imagesArr[arrIndex].image} alt=""></img>
       )
     }
   }
@@ -313,7 +314,7 @@ function FourPicOneWord() {
   function renderChoicesImages(arr){
     if(arr.length !== 0){
       const choices = []
-
+      // eslint-disable-next-line
       arr.map((item, key) => {
         choices.push(
             <button key={key} value={item.value} onClick={event => handleBtnChoices(event, key)}>
@@ -329,7 +330,7 @@ function FourPicOneWord() {
   function renderAnswerImages(arr){
     if(arr.length !== 0){
       const choices = []
-
+      // eslint-disable-next-line
       arr.map((item, key) => {
         choices.push(
             <button key={key} value={item.value}>
@@ -345,7 +346,7 @@ function FourPicOneWord() {
   function renderBlankAnswers(arr){
     if(arr.length !== 0){
       const blankAnswer = []
-
+      // eslint-disable-next-line
       arr.map((item, key) => {
         blankAnswer.push(
             <div key={key} className='blank-answer'>
@@ -422,10 +423,10 @@ function FourPicOneWord() {
   function renderLostLives(arr){
     if(arr.length !== 0){
       const lives = []
-
+      // eslint-disable-next-line
       arr.map((item, key) => {
         lives.push(
-          <AiFillHeart className='outlined-heart' key={key}/>
+          <AiOutlineHeart className='outlined-heart' key={key}/>
         )
       })
       return lives
@@ -435,7 +436,7 @@ function FourPicOneWord() {
   function renderRemainingLives(arr){
     if(arr.length !== 0){
       const lives = []
-
+      // eslint-disable-next-line
       arr.map((item, key) => {
         lives.push(
           <AiFillHeart className='filled-heart' key={key}/>
@@ -447,20 +448,24 @@ function FourPicOneWord() {
   }
 
   function getRemainingLives(){
+    const remainingLivesCopy = []
     if(difficulty === 'Easy'){
       for(let i =  0; i < 5; i++){
-        remainingLives.push('')
+        remainingLivesCopy.push('')
       }
+      setRemainingLives(remainingLivesCopy)
     }
     else if(difficulty === 'Medium'){
       for(let i =  0; i < 4; i++){
-        remainingLives.push('')
+        remainingLivesCopy.push('')
       }
+      setRemainingLives(remainingLivesCopy)
     }
     else {
       for(let i =  0; i < 3; i++){
-        remainingLives.push('')
+        remainingLivesCopy.push('')
       }
+      setRemainingLives(remainingLivesCopy)
     }
   }
 
@@ -480,20 +485,15 @@ function FourPicOneWord() {
         setGameStart(false)
       }
     }
+    // eslint-disable-next-line
   }, [correct, wrong]);
-
-  //when the gameStart button is press render and set the lives depending on the difficulty
-  useEffect(() => {
-    if(gameStart){
-      getRemainingLives()
-    }
-  }, [gameStart]);
 
   //when answerArr changes state get image value 
   useEffect(() => {
     if(choicesArr.length !== 0){
       setAnswerImageArr(getImages(answerArr))
     }
+    // eslint-disable-next-line
   }, [answerArr]);
 
   useEffect(() => {
@@ -504,6 +504,7 @@ function FourPicOneWord() {
       //getter and renderer for the blank answer
       getBlankAnswers(imagesArr[arrIndex].value)
     }
+    // eslint-disable-next-line
   }, [imagesArr]);
 
   //when the arrIndex change state shuffle the correct answer with other random items then render the button choices
@@ -515,6 +516,7 @@ function FourPicOneWord() {
       //getter and renderer for the blank answer
       getBlankAnswers(imagesArr[arrIndex].value)
     }
+    // eslint-disable-next-line
   }, [arrIndex]);
 
   //scratch useEffect to check the correct answer on console

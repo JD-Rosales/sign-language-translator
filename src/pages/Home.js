@@ -114,6 +114,7 @@ function Home() {
 
   useEffect(() => {
     startDetection();
+    // eslint-disable-next-line
   }, []);
   
   return (

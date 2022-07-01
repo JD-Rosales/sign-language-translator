@@ -188,6 +188,7 @@ function GuessHandSign() {
         nextAsl()
       }
     }
+    // eslint-disable-next-line
   }, [letter]);
 
 
@@ -202,6 +203,7 @@ function GuessHandSign() {
         setAslArray(null)
       }
     }
+    // eslint-disable-next-line
   }, [correct, wrong]);
 
   function btnA(){
