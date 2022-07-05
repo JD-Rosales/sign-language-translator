@@ -8,7 +8,7 @@ f.addDirection(Finger.Thumb, FingerDirection.DiagonalUpLeft, 1.0);
 
 //Index
 f.addCurl(Finger.Index, FingerCurl.FullCurl, 1.0);
-f.addDirection(Finger.Index, FingerDirection.DiagonalUpLeft, 1.0);
+f.addDirection(Finger.Index, FingerDirection.DiagonalUpLeft, 0.9);
 
 //Middle
 f.addCurl(Finger.Middle, FingerCurl.NoCurl, 1.0);

@@ -5,7 +5,7 @@ export const s = new GestureDescription("S");
 
 //Thumb
 s.addCurl(Finger.Thumb, FingerCurl.HalfCurl, 1.0);
-s.addDirection(Finger.Thumb, FingerDirection.DiagonalUpRight, 1.0); 
+s.addDirection(Finger.Thumb, FingerDirection.DiagonalUpRight, 0.8); 
 
 //Index
 s.addCurl(Finger.Index, FingerCurl.FullCurl, 1.0);

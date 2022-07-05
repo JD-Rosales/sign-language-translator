@@ -16,22 +16,23 @@ import {f} from '../asl/F'
 import {g} from '../asl/G'
 import {h} from '../asl/H'
 import {i} from '../asl/I'
-
+import {j} from '../asl/J'
 import {k} from '../asl/K'
 import {l} from '../asl/L'
-
-
+import {m} from '../asl/M'
+import {n} from '../asl/N'
 import {o} from '../asl/O'
 import {p} from '../asl/P'
 import {q} from '../asl/Q'
 import {r} from '../asl/R'
 import {s} from '../asl/S'
-
+//T asl
 import {u} from '../asl/U'
 import {v} from '../asl/V'
 import {w} from '../asl/W'
 import {x} from '../asl/X'
 import {y} from '../asl/Y'
+//z asl
 
 import A from '../asl-img/A.png'
 import B from '../asl-img/B.png'
@@ -62,7 +63,7 @@ import Z from '../asl-img/Z.png'
 
 function Practice() {
 
-  const asl = [a, b, c, d, e, f, g, h, i, k, l, o, p, q, r, s, u, v, w, x, y]
+  const asl = [a, b, c, d, e, f, g, h, i, j, k, l, m, n, o, p, q, r, s, u, v, w, x, y]
 
   const [handsign, setHandsign] = useState(null);
   const [gestureConfidence, setGestureConfidence] = useState(null);
